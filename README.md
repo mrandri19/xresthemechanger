@@ -1,4 +1,6 @@
-# xresthemechanger
+# xresthemechanger 
+[![Build Status](https://travis-ci.org/mrandri19/xresthemechanger.svg)](https://travis-ci.org/mrandri19/xresthemechanger)
+
 A simple python script to change the .Xresource color theme
 # Usage
 To install it clone the repository with `git clone https://github.com/mrandri19/xresthemechanger.git`.
