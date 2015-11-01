@@ -4,3 +4,6 @@ python:
 
 # Dependencies
 install: "pip install -r requirements.txt"
+
+# Test
+script: nosetests
