@@ -21,14 +21,15 @@ The variables to change are FILE_NAME and FILE_PATH
 
 # Options
 ```
-xresthemechanger --help
-Usage: xresthemechanger [OPTIONS]
+Usage: lib.py [OPTIONS]
 
 Options:
-  -c, --colorscheme TEXT  Set the colorscheme
-  -l, --list              List all the available colorschemes
-  --current               Display the current colorscheme
-  --help                  Show this message and exit.
+  -c, --colorscheme TEXT      Set the colorscheme
+  -lc, --list-colorschemes    List all the available colorschemes
+  -cc, --current-colorscheme  Display the current colorscheme
+  -cf, --current-font         Display the current font
+  -e, --edit-xresources       Opens $EDITOR to edit the .Xresources file
+  --help                      Show this message and exit.
 ```
 #Todo
 - Add file path setting directly from console

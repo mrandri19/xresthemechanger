@@ -5,10 +5,15 @@ from subprocess import run
 FILE_NAME = '.Xresources'
 FILE_PATH = "/home/andrea/.config/X11/"
 
-def updateColorscheme(old_colorscheme, new_colorscheme):
+def getFile(mode):
     #Read from Xresources
+    f = open(os.path.join(FILE_PATH, FILE_NAME), mode)
+    return f.read()
+
+def updateColorscheme(old_colorscheme, new_colorscheme):
+
     f = open(os.path.join(FILE_PATH, FILE_NAME), 'r+')
-    content = f.read()
+    content = getFile('r+')
 
     #Replace the colorscheme and write
     new_content = content.replace(old_colorscheme ,new_colorscheme)
@@ -37,8 +42,7 @@ def findColorschemes():
 
 def currentColorscheme():
     #Read from Xresources and return the third line
-    f = open(os.path.join(FILE_PATH,FILE_NAME),'r')
-    content = f.read()
+    content = getFile('r')
 
     lines = content.splitlines()
     for line in lines:
@@ -55,11 +59,10 @@ def currentColorscheme():
             return line
     return False
 
-def findFonts():
+def currentFont():
     fonts = []
 
-    f = open(os.path.join(FILE_PATH,FILE_NAME),'r')
-    content = f.read()
+    content = getFile('r')
 
     lines = content.splitlines()
     for line in lines:
@@ -81,13 +84,14 @@ def findFonts():
 @click.option('-lc', '--list-colorschemes', help='List all the available colorschemes',\
         is_flag=True)
 @click.option('-cc', '--current-colorscheme', help='Display the current colorscheme', is_flag=True)
-@click.option('-lf', '--list-fonts', help='', is_flag=True)
-def cli(colorscheme, list_colorschemes, current_colorscheme, list_fonts):
+@click.option('-cf', '--current-font', help='Display the current font', is_flag=True)
+@click.option('-e', '--edit-xresources', help='Opens $EDITOR to edit the .Xresources file', is_flag=True)
+def cli(colorscheme, list_colorschemes, current_colorscheme, current_font, edit_xresources):
 
     if colorscheme is not None :
         updateColorscheme(currentColorscheme(), colorscheme)
         #Update Xresources
-        run("xrdb -load /home/andrea/.config/X11/.Xresources", shell=True, check=True)
+        run("xrdb -load {}{}".format(FILE_PATH, FILE_NAME), shell=True, check=True)
 
     if list_colorschemes is True:
         click.echo("".join(findColorschemes()).rstrip("\n"))
@@ -95,10 +99,11 @@ def cli(colorscheme, list_colorschemes, current_colorscheme, list_fonts):
     if current_colorscheme is True:
         click.echo(currentColorscheme())
 
-    if list_fonts is True:
-        click.echo("".join(findFonts()).rstrip("\n"))
+    if current_font is True:
+        click.echo("".join(currentFont()).rstrip("\n"))
 
+    if edit_xresources is True:
+        os.system('{} {}'.format(os.getenv('EDITOR'), (FILE_PATH+FILE_NAME)))
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     cli()
