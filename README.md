@@ -5,10 +5,7 @@ A simple python script to change the .Xresource color theme
 # Usage
 To install it clone the repository with `git clone https://github.com/mrandri19/xresthemechanger.git`.
 Then you can just run it with `python lib.py`
-# Dependencies
-It require [Python](https://www.python.org/) > 3 and
-[Click](http://click.pocoo.org/5/) ~ 5.0
-Install it using pip with `pip install click`
+
 # Adding to path
 To call it directly from the console run this commands (assuming you are not root):
 ```
@@ -21,14 +18,22 @@ The variables to change are FILE_NAME and FILE_PATH
 
 # Options
 ```
+<<<<<<< HEAD
 Usage: lib.py [OPTIONS]
+=======
+Usage: xresthemechanger [OPTIONS]
+>>>>>>> dfa87abb46d2931b0ea3951aaf560b819f25bfd1
 
 Options:
   -c, --colorscheme TEXT      Set the colorscheme
   -lc, --list-colorschemes    List all the available colorschemes
   -cc, --current-colorscheme  Display the current colorscheme
+<<<<<<< HEAD
   -cf, --current-font         Display the current font
   -e, --edit-xresources       Opens $EDITOR to edit the .Xresources file
+=======
+  -lf, --list-fonts
+>>>>>>> dfa87abb46d2931b0ea3951aaf560b819f25bfd1
   --help                      Show this message and exit.
 ```
 #Todo
