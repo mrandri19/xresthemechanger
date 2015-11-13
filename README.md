@@ -18,22 +18,16 @@ The variables to change are FILE_NAME and FILE_PATH
 
 # Options
 ```
-<<<<<<< HEAD
 Usage: lib.py [OPTIONS]
-=======
 Usage: xresthemechanger [OPTIONS]
->>>>>>> dfa87abb46d2931b0ea3951aaf560b819f25bfd1
 
 Options:
   -c, --colorscheme TEXT      Set the colorscheme
   -lc, --list-colorschemes    List all the available colorschemes
+  -lf, --list-fonts
   -cc, --current-colorscheme  Display the current colorscheme
-<<<<<<< HEAD
   -cf, --current-font         Display the current font
   -e, --edit-xresources       Opens $EDITOR to edit the .Xresources file
-=======
-  -lf, --list-fonts
->>>>>>> dfa87abb46d2931b0ea3951aaf560b819f25bfd1
   --help                      Show this message and exit.
 ```
 #Todo
